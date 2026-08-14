@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foster Data Pro — Fast & Affordable VTU</title>
+<meta name="description" content="Foster Data Pro — affordable data, airtime, cable and bill payment services.">
+<style>
+:root{--primary:#0b6bff;--dark:#08111f;--muted:#667085;--bg:#f5f8fc;--card:#fff;--border:#e6ebf2}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--dark)}
+header{background:linear-gradient(135deg,#071a35,#0b6bff);color:white;padding:18px 18px 48px}
+nav{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:21px}.logo span{color:#b9d3ff}
+.navbtn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;padding:9px 13px;border-radius:10px}
+.hero{max-width:1050px;margin:50px auto 0}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:0 0 16px;max-width:700px}.hero p{font-size:17px;line-height:1.6;max-width:650px;color:#e7efff}.cta{display:inline-block;background:#fff;color:#075ee8;padding:13px 18px;border-radius:11px;text-decoration:none;font-weight:700;margin-top:10px}
+main{max-width:1050px;margin:-25px auto 50px;padding:0 16px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:22px;box-shadow:0 7px 25px rgba(16,24,40,.05)}.card h3{margin:8px 0}.icon{font-size:28px}.card p{color:var(--muted);line-height:1.5;margin-bottom:16px}.service{display:flex;justify-content:space-between;align-items:center}.service button{background:var(--primary);border:0;color:#fff;padding:10px 13px;border-radius:9px;font-weight:700}
+.section{margin-top:28px}.section h2{font-size:25px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step strong{display:block;margin-bottom:7px}.notice{margin-top:25px;background:#fff8e8;border:1px solid #f1d48a;border-radius:13px;padding:15px;color:#694d00;line-height:1.5}
+footer{background:#08111f;color:#cbd5e1;padding:28px 18px;text-align:center}.small{font-size:13px}
+@media(max-width:650px){.grid,.steps{grid-template-columns:1fr}.hero{margin-top:38px}}
+</style>
+</head>
+<body>
+<header>
+<nav><div class="logo">FOSTER <span>DATA PRO</span></div><button class="navbtn" onclick="alert('Customer login will be connected in a later step.')">Login</button></nav>
+<div class="hero">
+<h1>Fast, simple & affordable digital services.</h1>
+<p>Buy data and airtime, pay bills and manage your transactions from one convenient platform.</p>
+<a class="cta" href="#services">Explore Services</a>
+</div>
+</header>
+
+<main>
+<section id="services" class="section">
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card"><div class="icon">📶</div><div class="service"><h3>Data Bundles</h3><button onclick="demo('Data')">View Plans</button></div><p>Affordable data bundles for supported Nigerian networks.</p></div>
+<div class="card"><div class="icon">📱</div><div class="service"><h3>Airtime</h3><button onclick="demo('Airtime')">Buy Airtime</button></div><p>Recharge your line quickly and conveniently.</p></div>
+<div class="card"><div class="icon">📺</div><div class="service"><h3>Cable TV</h3><button onclick="demo('Cable TV')">Pay Cable</button></div><p>Pay supported TV subscriptions from one dashboard.</p></div>
+<div class="card"><div class="icon">💡</div><div class="service"><h3>Electricity</h3><button onclick="demo('Electricity')">Pay Bill</button></div><p>Electricity bill payments will be connected through a VTU provider.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2>How It Works</h2>
+<div class="steps">
+<div class="card step"><strong>1. Create an account</strong><span class="small">Register and access your customer dashboard.</span></div>
+<div class="card step"><strong>2. Fund your wallet</strong><span class="small">A secure payment gateway will be connected later.</span></div>
+<div class="card step"><strong>3. Purchase a service</strong><span class="small">Choose a service and confirm your transaction.</span></div>
+</div>
+</section>
+
+<div class="notice"><strong>Development mode:</strong> This first version is a website prototype. No real money, customer passwords, payment details or VTU transactions are processed yet.</div>
+</main>
+
+<footer><strong>Foster Data Pro</strong><br><span class="small">Affordable digital services • Built for Nigeria</span></footer>
+<script>
+function demo(service){alert(service + " is currently in demo mode. The live VTU API will be connected after the website foundation is ready.");}
+</script>
+</body>
+</html>
