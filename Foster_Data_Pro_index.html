@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foster Data Pro</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#101828}
+header{background:#0b4dcc;color:#fff;padding:18px 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:800}.btn{border:0;border-radius:10px;padding:13px 20px;font-weight:700;cursor:pointer}
+.btn-primary{background:#1264e8;color:white}.btn-light{background:white;color:#1264e8}
+.hero{background:linear-gradient(135deg,#073b9b,#1477f5);color:white;padding:65px 7% 75px}
+.hero h1{font-size:44px;max-width:650px;margin:0 0 20px}.hero p{font-size:20px;line-height:1.6;max-width:700px}
+section{padding:35px 6%}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:#fff;border-radius:18px;padding:25px;box-shadow:0 3px 16px #00000012}.card h3{margin-top:0}
+.modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;padding:20px;z-index:5}
+.modal.show{display:flex}.box{background:white;width:100%;max-width:420px;border-radius:18px;padding:25px}
+.tabs{display:flex;gap:8px;margin-bottom:20px}.tab{flex:1;padding:12px;border:1px solid #ddd;background:#f5f5f5;border-radius:9px;font-weight:700}.tab.active{background:#1264e8;color:white}
+input{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #ccd3df;border-radius:9px;font-size:16px}
+label{font-weight:700;font-size:14px}.error{color:#c62828;margin:8px 0}.success{color:#16803a;margin:8px 0}
+.account{display:none}.account.show{display:block}
+footer{text-align:center;padding:30px;background:#0b1730;color:#fff}
+.close{float:right;background:none;border:0;font-size:25px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">FOSTER DATA PRO</div>
+  <button class="btn btn-light" id="authBtn">Login / Register</button>
+</header>
+
+<div class="hero">
+  <h1>Fast, simple & affordable digital services.</h1>
+  <p>Buy data and airtime, pay bills and manage your transactions from one convenient platform.</p>
+  <button class="btn btn-light" onclick="document.getElementById('services').scrollIntoView()">Explore Services</button>
+</div>
+
+<section id="services">
+<h2>Our Services</h2>
+<div class="cards">
+ <div class="card"><h3>📶 Data Bundles</h3><p>Affordable data bundles for supported Nigerian networks.</p><button class="btn btn-primary" onclick="demo('Data Bundles')">View Plans</button></div>
+ <div class="card"><h3>📱 Airtime</h3><p>Purchase airtime quickly and conveniently.</p><button class="btn btn-primary" onclick="demo('Airtime')">View Options</button></div>
+ <div class="card"><h3>📺 Cable TV</h3><p>Manage supported cable subscriptions from one place.</p><button class="btn btn-primary" onclick="demo('Cable TV')">View Options</button></div>
+</div>
+</section>
+
+<section class="account" id="account">
+<div class="card">
+<h2>My Account</h2><p id="welcome"></p>
+<button class="btn btn-primary" id="logoutBtn">Log out</button>
+</div>
+</section>
+
+<div class="modal" id="authModal">
+<div class="box">
+<button class="close" id="closeBtn">&times;</button>
+<h2>Customer Account</h2>
+<div class="tabs">
+<button class="tab active" id="loginTab">Login</button>
+<button class="tab" id="registerTab">Register</button>
+</div>
+
+<form id="loginForm">
+<label>Email</label><input id="loginEmail" type="email" required>
+<label>Password</label><input id="loginPassword" type="password" required>
+<div id="loginMsg"></div>
+<button class="btn btn-primary" type="submit">Login</button>
+</form>
+
+<form id="registerForm" style="display:none">
+<label>Full name</label><input id="regName" type="text" required>
+<label>Email</label><input id="regEmail" type="email" required>
+<label>Phone number</label><input id="regPhone" type="tel" required>
+<label>Password</label><input id="regPassword" type="password" minlength="6" required>
+<div id="registerMsg"></div>
+<button class="btn btn-primary" type="submit">Create account</button>
+</form>
+</div>
+</div>
+
+<footer>© 2026 Foster Data Pro. Customer account system is currently a prototype.</footer>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const USERS_KEY='foster_data_pro_users_v1';
+const SESSION_KEY='foster_data_pro_session_v1';
+
+function users(){try{return JSON.parse(localStorage.getItem(USERS_KEY)||'[]')}catch(e){return[]}}
+function saveUsers(list){localStorage.setItem(USERS_KEY,JSON.stringify(list))}
+function session(){try{return JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return null}}
+
+function updateUI(){
+ const u=session();
+ if(u){
+   $('authBtn').textContent='My Account';
+   $('account').classList.add('show');
+   $('welcome').textContent='Welcome, '+u.name+'! Your customer account is active.';
+ }else{
+   $('authBtn').textContent='Login / Register';
+   $('account').classList.remove('show');
+ }
+}
+
+function openAuth(){ $('authModal').classList.add('show'); }
+function closeAuth(){ $('authModal').classList.remove('show'); }
+
+$('authBtn').onclick=function(){
+ if(session()){ $('account').scrollIntoView({behavior:'smooth'}); }
+ else openAuth();
+};
+$('closeBtn').onclick=closeAuth;
+
+$('loginTab').onclick=function(){
+ $('loginTab').classList.add('active'); $('registerTab').classList.remove('active');
+ $('loginForm').style.display='block'; $('registerForm').style.display='none';
+};
+$('registerTab').onclick=function(){
+ $('registerTab').classList.add('active'); $('loginTab').classList.remove('active');
+ $('registerForm').style.display='block'; $('loginForm').style.display='none';
+};
+
+$('registerForm').onsubmit=function(e){
+ e.preventDefault();
+ const name=$('regName').value.trim(), email=$('regEmail').value.trim().toLowerCase();
+ const phone=$('regPhone').value.trim(), password=$('regPassword').value;
+ const msg=$('registerMsg');
+ if(password.length<6){msg.className='error';msg.textContent='Password must be at least 6 characters.';return;}
+ const list=users();
+ if(list.some(u=>u.email===email)){msg.className='error';msg.textContent='An account with this email already exists.';return;}
+ list.push({name,email,phone,password});
+ saveUsers(list);
+ localStorage.setItem(SESSION_KEY,JSON.stringify({name,email,phone}));
+ msg.className='success';msg.textContent='Account created successfully!';
+ updateUI();
+ setTimeout(closeAuth,500);
+};
+
+$('loginForm').onsubmit=function(e){
+ e.preventDefault();
+ const email=$('loginEmail').value.trim().toLowerCase(), password=$('loginPassword').value;
+ const u=users().find(x=>x.email===email && x.password===password);
+ const msg=$('loginMsg');
+ if(!u){msg.className='error';msg.textContent='Incorrect email or password.';return;}
+ localStorage.setItem(SESSION_KEY,JSON.stringify({name:u.name,email:u.email,phone:u.phone}));
+ msg.className='success';msg.textContent='Login successful!';
+ updateUI();
+ setTimeout(closeAuth,500);
+};
+
+$('logoutBtn').onclick=function(){
+ localStorage.removeItem(SESSION_KEY); updateUI();
+};
+window.demo=function(name){
+ alert(name+' will be connected to the live VTU service in the next build.');
+};
+updateUI();
+})();
+</script>
+</body>
+</html>
