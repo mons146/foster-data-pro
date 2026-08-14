@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foster Data Pro — Fast & Affordable VTU</title>
+<meta name="description" content="Foster Data Pro — affordable data, airtime, cable and bill payment services.">
+<style>
+:root{--primary:#0b6bff;--dark:#08111f;--muted:#667085;--bg:#f5f8fc;--card:#fff;--border:#e6ebf2}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--dark)}
+header{background:linear-gradient(135deg,#071a35,#0b6bff);color:white;padding:18px 18px 48px}
+nav{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:21px}.logo span{color:#b9d3ff}
+.navbtn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;padding:9px 13px;border-radius:10px}
+.hero{max-width:1050px;margin:50px auto 0}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:0 0 16px;max-width:700px}.hero p{font-size:17px;line-height:1.6;max-width:650px;color:#e7efff}.cta{display:inline-block;background:#fff;color:#075ee8;padding:13px 18px;border-radius:11px;text-decoration:none;font-weight:700;margin-top:10px}
+main{max-width:1050px;margin:-25px auto 50px;padding:0 16px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:22px;box-shadow:0 7px 25px rgba(16,24,40,.05)}.card h3{margin:8px 0}.icon{font-size:28px}.card p{color:var(--muted);line-height:1.5;margin-bottom:16px}.service{display:flex;justify-content:space-between;align-items:center}.service button{background:var(--primary);border:0;color:#fff;padding:10px 13px;border-radius:9px;font-weight:700}
+.section{margin-top:28px}.section h2{font-size:25px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step strong{display:block;margin-bottom:7px}.notice{margin-top:25px;background:#fff8e8;border:1px solid #f1d48a;border-radius:13px;padding:15px;color:#694d00;line-height:1.5}
+footer{background:#08111f;color:#cbd5e1;padding:28px 18px;text-align:center}.small{font-size:13px}
+@media(max-width:650px){.grid,.steps{grid-template-columns:1fr}.hero{margin-top:38px}}
+
+.modal-backdrop{position:fixed;inset:0;background:rgba(8,17,31,.68);display:flex;align-items:center;justify-content:center;padding:18px;z-index:20}
+.modal{width:min(430px,100%);background:#fff;border-radius:18px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative}
+.modal h2{margin:0 0 6px}.modal p{color:var(--muted);line-height:1.45}.close{position:absolute;right:14px;top:10px;border:0;background:#eef3f8;border-radius:50%;width:34px;height:34px;font-size:20px}
+.tabs{display:flex;gap:8px;margin:16px 0}.tab{flex:1;padding:10px;border:1px solid var(--border);background:#f7f9fc;border-radius:9px;font-weight:700}.tab.active{background:#0b6bff;color:#fff;border-color:#0b6bff}
+.form{display:grid;gap:11px}.form label{font-size:13px;font-weight:700}.form input{width:100%;padding:12px;border:1px solid #d6dde8;border-radius:9px;font-size:15px}.primary{border:0;background:#0b6bff;color:#fff;padding:12px;border-radius:9px;font-weight:700;font-size:15px}.error{color:#b42318;background:#fff1f0;padding:9px;border-radius:8px;font-size:13px}.success{color:#067647;background:#ecfdf3;padding:9px;border-radius:8px;font-size:13px}
+.account-panel{background:#fff;border:1px solid var(--border);border-radius:17px;padding:20px;margin-top:28px;box-shadow:0 7px 25px rgba(16,24,40,.05)}
+.account-panel .logout{float:right;border:1px solid #d6dde8;background:#fff;padding:8px 12px;border-radius:8px;font-weight:700}
+</style>
+</head>
+<body>
+<header>
+<nav><div class="logo">FOSTER <span>DATA PRO</span></div><button class="navbtn" id="authBtn" onclick="openAuth()">Login / Register</button></nav>
+<div class="hero">
+<h1>Fast, simple & affordable digital services.</h1>
+<p>Buy data and airtime, pay bills and manage your transactions from one convenient platform.</p>
+<a class="cta" href="#services">Explore Services</a>
+</div>
+</header>
+
+<main>
+<section id="services" class="section">
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card"><div class="icon">📶</div><div class="service"><h3>Data Bundles</h3><button onclick="demo('Data')">View Plans</button></div><p>Affordable data bundles for supported Nigerian networks.</p></div>
+<div class="card"><div class="icon">📱</div><div class="service"><h3>Airtime</h3><button onclick="demo('Airtime')">Buy Airtime</button></div><p>Recharge your line quickly and conveniently.</p></div>
+<div class="card"><div class="icon">📺</div><div class="service"><h3>Cable TV</h3><button onclick="demo('Cable TV')">Pay Cable</button></div><p>Pay supported TV subscriptions from one dashboard.</p></div>
+<div class="card"><div class="icon">💡</div><div class="service"><h3>Electricity</h3><button onclick="demo('Electricity')">Pay Bill</button></div><p>Electricity bill payments will be connected through a VTU provider.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2>How It Works</h2>
+<div class="steps">
+<div class="card step"><strong>1. Create an account</strong><span class="small">Register and access your customer dashboard.</span></div>
+<div class="card step"><strong>2. Fund your wallet</strong><span class="small">A secure payment gateway will be connected later.</span></div>
+<div class="card step"><strong>3. Purchase a service</strong><span class="small">Choose a service and confirm your transaction.</span></div>
+</div>
+</section>
+
+<div id="accountPanel" class="account-panel" hidden></div>
+<div class="notice"><strong>Development mode:</strong> Customer registration and login are working as a browser-only prototype. For a real VTU service, we will replace this with secure server-side authentication before handling real customer accounts or money.</div>
+</main>
+
+<footer><strong>Foster Data Pro</strong><br><span class="small">Affordable digital services • Built for Nigeria</span></footer>
+<div id="authModal" class="modal-backdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="close" onclick="closeAuth()" aria-label="Close">×</button>
+    <h2 id="authTitle">Welcome to Foster Data Pro</h2>
+    <p id="authSubtitle">Create an account to access your customer area.</p>
+    <div class="tabs"><button class="tab active" id="loginTab" onclick="showAuth('login')">Login</button><button class="tab" id="registerTab" onclick="showAuth('register')">Register</button></div>
+    <div id="authMessage"></div>
+    <form id="loginForm" class="form" onsubmit="login(event)">
+      <div><label for="loginEmail">Email</label><input id="loginEmail" type="email" required autocomplete="email"></div>
+      <div><label for="loginPassword">Password</label><input id="loginPassword" type="password" required autocomplete="current-password"></div>
+      <button class="primary" type="submit">Login</button>
+    </form>
+    <form id="registerForm" class="form" onsubmit="register(event)" hidden>
+      <div><label for="regName">Full name</label><input id="regName" type="text" required minlength="2" autocomplete="name"></div>
+      <div><label for="regEmail">Email</label><input id="regEmail" type="email" required autocomplete="email"></div>
+      <div><label for="regPhone">Phone number</label><input id="regPhone" type="tel" required autocomplete="tel" placeholder="08012345678"></div>
+      <div><label for="regPassword">Password</label><input id="regPassword" type="password" required minlength="6" autocomplete="new-password"></div>
+      <button class="primary" type="submit">Create account</button>
+    </form>
+  </div>
+</div>
+<script>
+const USERS_KEY='fosterDataProUsers';
+const SESSION_KEY='fosterDataProSession';
+function getUsers(){try{return JSON.parse(localStorage.getItem(USERS_KEY)||'[]')}catch{return[]}}
+function saveUsers(users){localStorage.setItem(USERS_KEY,JSON.stringify(users))}
+async function hashPassword(password){const data=new TextEncoder().encode(password);const hash=await crypto.subtle.digest('SHA-256',data);return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+function openAuth(mode='login'){document.getElementById('authModal').hidden=false;showAuth(mode)}
+function closeAuth(){document.getElementById('authModal').hidden=true;document.getElementById('authMessage').innerHTML=''}
+function showAuth(mode){
+ document.getElementById('loginForm').hidden=mode!=='login';document.getElementById('registerForm').hidden=mode!=='register';
+ document.getElementById('loginTab').classList.toggle('active',mode==='login');document.getElementById('registerTab').classList.toggle('active',mode==='register');
+ document.getElementById('authTitle').textContent=mode==='login'?'Welcome back':'Create your Foster Data Pro account';
+ document.getElementById('authSubtitle').textContent=mode==='login'?'Login to your customer area.':'Register to access your customer area.';
+ document.getElementById('authMessage').innerHTML='';
+}
+function message(text,type='error'){document.getElementById('authMessage').innerHTML='<div class="'+type+'">'+text+'</div>'}
+async function register(e){
+ e.preventDefault();
+ const name=document.getElementById('regName').value.trim(),email=document.getElementById('regEmail').value.trim().toLowerCase(),phone=document.getElementById('regPhone').value.trim(),password=document.getElementById('regPassword').value;
+ const users=getUsers(); if(users.some(u=>u.email===email)){message('An account with this email already exists. Try logging in.');return}
+ const passwordHash=await hashPassword(password); const user={id:crypto.randomUUID(),name,email,phone,passwordHash,createdAt:new Date().toISOString()};users.push(user);saveUsers(users);localStorage.setItem(SESSION_KEY,user.id);
+ closeAuth();renderAccount();alert('Account created successfully. Welcome, '+name+'!');
+}
+async function login(e){
+ e.preventDefault(); const email=document.getElementById('loginEmail').value.trim().toLowerCase(),password=document.getElementById('loginPassword').value;
+ const user=getUsers().find(u=>u.email===email); if(!user){message('No account was found with that email.');return}
+ if(await hashPassword(password)!==user.passwordHash){message('Incorrect password.');return}
+ localStorage.setItem(SESSION_KEY,user.id);closeAuth();renderAccount();alert('Login successful. Welcome back, '+user.name+'!');
+}
+function logout(){localStorage.removeItem(SESSION_KEY);renderAccount();alert('You have been logged out.')}
+function renderAccount(){
+ const panel=document.getElementById('accountPanel'),id=localStorage.getItem(SESSION_KEY),user=getUsers().find(u=>u.id===id);
+ if(!user){panel.hidden=true;document.getElementById('authBtn').textContent='Login / Register';return}
+ panel.hidden=false;document.getElementById('authBtn').textContent='My Account';
+ panel.innerHTML='<button class="logout" onclick="logout()">Log out</button><h3>Welcome, '+escapeHtml(user.name)+' 👋</h3><p>Account email: '+escapeHtml(user.email)+'</p><p>Phone: '+escapeHtml(user.phone)+'</p><p class="small">Your customer dashboard will be expanded next with wallet funding, data purchases and transaction history.</p>';
+}
+function escapeHtml(value){return value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function demo(service){alert(service + ' is currently in demo mode. The live VTU API will be connected after the website foundation is ready.')}
+renderAccount();
+</script>
+</body>
+</html>
