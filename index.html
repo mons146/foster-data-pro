@@ -392,8 +392,7 @@ async function register(e){
     }
 
   }catch(error){
-    msg.textContent='Connection error. Please try again.';
-    console.error(error);
+    msg.textContent='Error: '+error.message;.error(error);
   }
 }
 
