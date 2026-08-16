@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Foster Data Pro</title>
 <meta name="description" content="Foster Data Pro - affordable data, airtime and bill payment services in Nigeria.">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f4f7fb;color:#101828}
@@ -32,19 +33,26 @@ footer{text-align:center;background:#071b35;color:#d0d5dd;padding:30px 20px;marg
 .tabs{display:flex;margin:20px 0}
 .tabs button{flex:1;background:#eef3f8;color:#344054;border-radius:8px}
 .tabs button.active{background:#087cff;color:#fff}
-.form{display:none}.form.active{display:block}
+.form{display:none}
+.form.active{display:block}
 label{display:block;font-weight:700;margin:13px 0 7px}
 input{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:9px;font-size:16px}
 .submit{width:100%;background:#087cff;color:#fff;margin-top:20px}
-.msg{margin-top:12px;font-size:14px;color:#b42318}
+.msg{margin-top:12px;font-size:14px;line-height:1.5}
+.error{color:#b42318}
+.success{color:#067647}
 .dashboard{display:none;position:fixed;inset:0;background:#f4f7fb;z-index:20;overflow:auto}
 .dash-head{background:#087cff;color:#fff;padding:22px 20px;display:flex;justify-content:space-between;align-items:center}
 .dash-body{max-width:900px;margin:auto;padding:30px 20px}
 .balance{background:#fff;border-radius:16px;padding:25px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
 .logout{background:#fff;color:#b42318}
-@media(max-width:600px){.hero{padding-top:45px}.hero h1{font-size:42px}}
+@media(max-width:600px){
+.hero{padding-top:45px}
+.hero h1{font-size:42px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -52,6 +60,7 @@ input{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:9px;font-si
 <div class="logo">FOSTER DATA PRO</div>
 <button class="login-btn" onclick="openAuth('login')">Login / Register</button>
 </nav>
+
 <section class="hero">
 <h1>Fast, simple & affordable digital services.</h1>
 <p>Buy data and airtime, pay bills and manage your transactions from one convenient platform.</p>
@@ -61,375 +70,339 @@ input{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:9px;font-si
 
 <main id="services">
 <h2>Our Services</h2>
+
 <div class="grid">
-<div class="card"><div class="icon">📶</div><h3>Data Bundles</h3><p>Affordable data bundles for supported Nigerian networks.</p><button onclick="openAuth('register')">View Plans</button></div>
-<div class="card"><div class="icon">📱</div><h3>Airtime</h3><p>Buy airtime quickly and conveniently.</p><button onclick="openAuth('register')">Buy Airtime</button></div>
-<div class="card"><div class="icon">📺</div><h3>Cable TV</h3><p>Pay your supported cable TV subscriptions.</p><button onclick="openAuth('register')">Pay Cable</button></div>
-<div class="card"><div class="icon">💳</div><h3>Bills Payment</h3><p>Manage supported bill payments from one platform.</p><button onclick="openAuth('register')">Pay Bills</button></div>
+
+<div class="card">
+<div class="icon">📶</div>
+<h3>Data Bundles</h3>
+<p>Affordable data bundles for supported Nigerian networks.</p>
+<button onclick="openAuth('register')">View Plans</button>
+</div>
+
+<div class="card">
+<div class="icon">📱</div>
+<h3>Airtime</h3>
+<p>Buy airtime quickly and conveniently.</p>
+<button onclick="openAuth('register')">Buy Airtime</button>
+</div>
+
+<div class="card">
+<div class="icon">📺</div>
+<h3>Cable TV</h3>
+<p>Pay your supported cable TV subscriptions.</p>
+<button onclick="openAuth('register')">Pay Cable</button>
+</div>
+
+<div class="card">
+<div class="icon">💳</div>
+<h3>Bills Payment</h3>
+<p>Manage supported bill payments from one platform.</p>
+<button onclick="openAuth('register')">Pay Bills</button>
+</div>
+
 </div>
 </main>
 
-<footer>© 2026 Foster Data Pro. All rights reserved.</footer>
+<footer>
+© 2026 Foster Data Pro. All rights reserved.
+</footer>
 
 <div class="modal" id="authModal">
+
 <div class="box">
+
 <button class="close" onclick="closeAuth()">✕</button>
+
 <h2 id="authTitle">Customer Login</h2>
+
 <div class="tabs">
 <button id="loginTab" class="active" onclick="switchAuth('login')">Login</button>
 <button id="registerTab" onclick="switchAuth('register')">Register</button>
 </div>
 
 <form id="loginForm" class="form active" onsubmit="login(event)">
-<label>Email or phone</label><input id="loginId" required>
-<label>Password</label><input id="loginPass" type="password" required>
-<button class="submit">Login</button>
+
+<label>Email</label>
+<input id="loginEmail" type="email" required>
+
+<label>Password</label>
+<input id="loginPass" type="password" required>
+
+<button class="submit" type="submit">Login</button>
+
 <div id="loginMsg" class="msg"></div>
+
 </form>
 
 <form id="registerForm" class="form" onsubmit="register(event)">
-<label>Full name</label><input id="regName" required>
-<label>Phone number</label><input id="regPhone" type="tel" required>
-<label>Email</label><input id="regEmail" type="email" required>
-<label>Password</label><input id="regPass" type="password" minlength="6" required>
-<button class="submit">Create Account</button>
+
+<label>Full name</label>
+<input id="regName" required>
+
+<label>Phone number</label>
+<input id="regPhone" type="tel" required>
+
+<label>Email</label>
+<input id="regEmail" type="email" required>
+
+<label>Password</label>
+<input id="regPass" type="password" minlength="6" required>
+
+<button class="submit" type="submit">Create Account</button>
+
 <div id="regMsg" class="msg"></div>
+
 </form>
+
 </div>
 </div>
 
 <div class="dashboard" id="dashboard">
+
 <div class="dash-head">
 <strong>FOSTER DATA PRO</strong>
 <button class="logout" onclick="logout()">Logout</button>
 </div>
+
 <div class="dash-body">
+
 <div class="balance">
 <h2>Welcome, <span id="userName"></span> 👋</h2>
 <p>Your account is ready. Wallet balance: <strong>₦0.00</strong></p>
 </div>
+
 <div class="grid">
-<div class="card"><h3>📶 Buy Data</h3><p>Choose a network and data plan.</p><button>Coming Soon</button></div>
-<div class="card"><h3>📱 Buy Airtime</h3><p>Purchase airtime from your wallet.</p><button>Coming Soon</button></div>
-<div class="card"><h3>📋 Transactions</h3><p>Your transaction history will appear here.</p><button>Coming Soon</button></div>
+
+<div class="card">
+<h3>📶 Buy Data</h3>
+<p>Choose a network and data plan.</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>📱 Buy Airtime</h3>
+<p>Purchase airtime from your wallet.</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>📋 Transactions</h3>
+<p>Your transaction history will appear here.</p>
+<button>Coming Soon</button>
+</div>
+
 </div>
 </div>
 </div>
 
-<script>
-const USERS_KEY='fosterDataProUsers';
-function getUsers(){return JSON.parse(localStorage.getItem(USERS_KEY)||'[]')}
-function saveUsers(users){localStorage.setItem(USERS_KEY,JSON.stringify(users))}
-function openAuth(mode){document.getElementById('authModal').style.display='block';switchAuth(mode)}
-function closeAuth(){document.getElementById('authModal').style.display='none'}
-function switchAuth(mode){
-const login=mode==='login';
-document.getElementById('loginForm').classList.toggle('active',login);
-document.getElementById('registerForm').classList.toggle('active',!login);
-document.getElementById('loginTab').classList.toggle('active',login);
-document.getElementById('registerTab').classList.toggle('active',!login);
-document.getElementById('authTitle').textContent=login?'Customer Login':'Create Customer Account';
-}
-function register(e){
-e.preventDefault();
-const name=document.getElementById('regName').value.trim();
-const phone=document.getElementById('regPhone').value.trim();
-const email=document.getElementById('regEmail').value.trim().toLowerCase();
-const password=document.getElementById('regPass').value;
-const msg=document.getElementById('regMsg');
-let users=getUsers();
-if(users.some(u=>u.email===email||u.phone===phone)){msg.textContent='An account with this email or phone already exists.';return}
-users.push({name,phone,email,password});
-saveUsers(users);
-msg.style.color='#067647';msg.textContent='Registration successful. You can now log in.';
-setTimeout(()=>switchAuth('login'),700);
-}
-function login(e){
-e.preventDefault();
-const id=document.getElementById('loginId').value.trim().toLowerCase();
-const pass=document.getElementById('loginPass').value;
-const user=getUsers().find(u=>(u.email===id||u.phone===id)&&u.password===pass);
-const msg=document.getElementById('loginMsg');
-if(!user){msg.textContent='Incorrect login details.';return}
-localStorage.setItem('fosterCurrentUser',JSON.stringify(user));
-closeAuth();showDashboard(user);
-}
-function showDashboard(user){
-document.getElementById('userName').textContent=user.name;
-document.getElementById('dashboard').style.display='block';
-}
-function logout(){localStorage.removeItem('fosterCurrentUser');document.getElementById('dashboard').style.display='none'}
-window.addEventListener('load',()=>{
-const user=JSON.parse(localStorage.getItem('fosterCurrentUser')||'null');
-if(user)showDashboard(user);
-});
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 const SUPABASE_URL = 'https://zbhoobplximrjvtmzzcf.supabase.co';
+
 const SUPABASE_KEY = 'sb_publishable_sVMkpIUqCHTMkLNVk8MY1Q_QBcwNZxI';
 
 const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-function openAuth(mode) {
-  document.getElementById('authModal').style.display = 'block';
-  switchAuth(mode);
-}
-
-function closeAuth() {
-  document.getElementById('authModal').style.display = 'none';
-}
-
-function switchAuth(mode) {
-  const isLogin = mode === 'login';
-
-  document.getElementById('loginForm').classList.toggle('active', isLogin);
-  document.getElementById('registerForm').classList.toggle('active', !isLogin);
-
-  document.getElementById('loginTab').classList.toggle('active', isLogin);
-  document.getElementById('registerTab').classList.toggle('active', !isLogin);
-
-  document.getElementById('authTitle').textContent =
-    isLogin ? 'Customer Login' : 'Create Customer Account';
-
-  if (isLogin) {
-    document.querySelector('#loginForm label').textContent = 'Email';
-    document.getElementById('loginId').type = 'email';
-    document.getElementById('loginId').placeholder = 'Enter your email';
-  }
-}
-
-async function register(e) {
-  e.preventDefault();
-
-  const name = document.getElementById('regName').value.trim();
-  const phone = document.getElementById('regPhone').value.trim();
-  const email = document.getElementById('regEmail').value.trim().toLowerCase();
-  const password = document.getElementById('regPass').value;
-  const msg = document.getElementById('regMsg');
-
-  msg.style.color = '#b42318';
-  msg.textContent = 'Creating your account...';
-
-  const { data, error } = await supabaseClient.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-      data: {
-        full_name: name,
-        phone: phone
-      }
-    }
-  });
-
-  if (error) {
-    msg.textContent = error.message;
-    return;
-  }
-
-  msg.style.color = '#067647';
-
-  if (data.session) {
-    msg.textContent = 'Account created successfully.';
-
-    setTimeout(() => {
-      closeAuth();
-      showDashboard({
-        name: name,
-        email: email
-      });
-    }, 800);
-  } else {
-    msg.textContent =
-      'Account created. Please check your email and confirm your account before logging in.';
-  }
-}
-
-async function login(e) {
-  e.preventDefault();
-
-  const email = document.getElementById('loginId').value.trim().toLowerCase();
-  const password = document.getElementById('loginPass').value;
-  const msg = document.getElementById('loginMsg');
-
-  msg.style.color = '#b42318';
-  msg.textContent = 'Logging in...';
-
-  const { data, error } =
-    await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
-
-  if (error) {
-    msg.textContent = error.message;
-    return;
-  }
-
-  const user = data.user;
-
-  const name =
-    user.user_metadata?.full_name ||
-    user.email ||
-    'Customer';
-
-  msg.style.color = '#067647';
-  msg.textContent = 'Login successful.';
-
-  setTimeout(() => {
-    closeAuth();
-    showDashboard({
-      name: name,
-      email: user.email
-    });
-  }, 500);
-}
-
-function showDashboard(user) {
-  document.getElementById('userName').textContent =
-    user.name || 'Customer';
-
-  document.getElementById('dashboard').style.display = 'block';
-}
-
-async function logout() {
-  await supabaseClient.auth.signOut();
-
-  document.getElementById('dashboard').style.display = 'none';
-}
-
-async function checkCurrentUser() {
-  const { data } = await supabaseClient.auth.getUser();
-
-  if (data.user) {
-    const user = data.user;
-
-    showDashboard({
-      name: user.user_metadata?.full_name || user.email,
-      email: user.email
-    });
-  }
-}
-
-window.addEventListener('load', () => {
-  checkCurrentUser();
-});
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPABASE_URL='https://zbhoobplximrjvtmzzcf.supabase.co';
-const SUPABASE_KEY='sb_publishable_sVMkpIUqCHTMkLNVk8MY1Q_QBcwNZxI';
-
-const supabaseClient=window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
 function openAuth(mode){
-  document.getElementById('authModal').style.display='block';
-  switchAuth(mode);
+
+document.getElementById('authModal').style.display='block';
+
+switchAuth(mode);
+
 }
 
 function closeAuth(){
-  document.getElementById('authModal').style.display='none';
+
+document.getElementById('authModal').style.display='none';
+
 }
 
 function switchAuth(mode){
-  const login=mode==='login';
 
-  document.getElementById('loginForm').classList.toggle('active',login);
-  document.getElementById('registerForm').classList.toggle('active',!login);
-  document.getElementById('loginTab').classList.toggle('active',login);
-  document.getElementById('registerTab').classList.toggle('active',!login);
-  document.getElementById('authTitle').textContent=
-    login?'Customer Login':'Create Customer Account';
+const isLogin = mode === 'login';
+
+document.getElementById('loginForm').classList.toggle('active',isLogin);
+
+document.getElementById('registerForm').classList.toggle('active',!isLogin);
+
+document.getElementById('loginTab').classList.toggle('active',isLogin);
+
+document.getElementById('registerTab').classList.toggle('active',!isLogin);
+
+document.getElementById('authTitle').textContent =
+isLogin ? 'Customer Login' : 'Create Customer Account';
+
 }
 
 async function register(e){
-  e.preventDefault();
 
-  const name=document.getElementById('regName').value.trim();
-  const phone=document.getElementById('regPhone').value.trim();
-  const email=document.getElementById('regEmail').value.trim().toLowerCase();
-  const password=document.getElementById('regPass').value;
-  const msg=document.getElementById('regMsg');
+e.preventDefault();
 
-  msg.style.color='#b42318';
-  msg.textContent='Creating account...';
+const name=document.getElementById('regName').value.trim();
 
-  try{
-    const {data,error}=await supabaseClient.auth.signUp({
-      email:email,
-      password:password,
-      options:{
-        data:{
-          full_name:name,
-          phone:phone
-        }
-      }
-    });
+const phone=document.getElementById('regPhone').value.trim();
 
-    if(error){
-      msg.textContent=error.message;
-      return;
-    }
+const email=document.getElementById('regEmail').value.trim().toLowerCase();
 
-    msg.style.color='#067647';
+const password=document.getElementById('regPass').value;
 
-    if(data.session){
-      msg.textContent='Account created successfully.';
-      setTimeout(()=>{
-        closeAuth();
-        showDashboard({
-          name:name,
-          email:email
-        });
-      },700);
-    }else{
-      msg.textContent='Account created. Check your email to confirm your account.';
-    }
+const msg=document.getElementById('regMsg');
 
-  }catch(error){
-    msg.textContent='Error: '+error.message;.error(error);
-  }
+msg.className='msg';
+
+msg.textContent='Creating account...';
+
+try{
+
+const {data,error}=await supabaseClient.auth.signUp({
+
+email:email,
+
+password:password,
+
+options:{
+data:{
+full_name:name,
+phone:phone
+}
+}
+
+});
+
+if(error){
+
+msg.className='msg error';
+
+msg.textContent=error.message;
+
+return;
+
+}
+
+msg.className='msg success';
+
+if(data.session){
+
+msg.textContent='Account created successfully.';
+
+setTimeout(function(){
+
+closeAuth();
+
+showDashboard(data.user);
+
+},700);
+
+}else{
+
+msg.textContent='Account created. Please check your email and confirm your account before logging in.';
+
+}
+
+}catch(error){
+
+msg.className='msg error';
+
+msg.textContent='Connection error: '+error.message;
+
+}
+
 }
 
 async function login(e){
-  e.preventDefault();
 
-  const email=document.getElementById('loginId').value.trim().toLowerCase();
-  const password=document.getElementById('loginPass').value;
-  const msg=document.getElementById('loginMsg');
+e.preventDefault();
 
-  msg.textContent='Logging in...';
+const email=document.getElementById('loginEmail').value.trim().toLowerCase();
 
-  const {data,error}=await supabaseClient.auth.signInWithPassword({
-    email:email,
-    password:password
-  });
+const password=document.getElementById('loginPass').value;
 
-  if(error){
-    msg.textContent=error.message;
-    return;
-  }
+const msg=document.getElementById('loginMsg');
 
-  closeAuth();
-  showDashboard({
-    name:data.user.user_metadata?.full_name || data.user.email
-  });
+msg.className='msg';
+
+msg.textContent='Logging in...';
+
+try{
+
+const {data,error}=await supabaseClient.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+if(error){
+
+msg.className='msg error';
+
+msg.textContent=error.message;
+
+return;
+
+}
+
+closeAuth();
+
+showDashboard(data.user);
+
+}catch(error){
+
+msg.className='msg error';
+
+msg.textContent='Connection error: '+error.message;
+
+}
+
 }
 
 function showDashboard(user){
-  document.getElementById('userName').textContent=user.name||'Customer';
-  document.getElementById('dashboard').style.display='block';
+
+const name =
+(user.user_metadata && user.user_metadata.full_name)
+? user.user_metadata.full_name
+: (user.email || 'Customer');
+
+document.getElementById('userName').textContent=name;
+
+document.getElementById('dashboard').style.display='block';
+
 }
 
 async function logout(){
-  await supabaseClient.auth.signOut();
-  document.getElementById('dashboard').style.display='none';
+
+await supabaseClient.auth.signOut();
+
+document.getElementById('dashboard').style.display='none';
+
 }
+
+async function checkSession(){
+
+const {data}=await supabaseClient.auth.getSession();
+
+if(data.session){
+
+showDashboard(data.session.user);
+
+}
+
+}
+
+window.addEventListener('load',function(){
+
+checkSession();
+
+});
+
 </script>
+
 </body>
-</html>
+  </html>
