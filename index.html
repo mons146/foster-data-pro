@@ -363,17 +363,27 @@ msg.textContent='Connection error: '+error.message;
 
 }
 
-function showDashboard(user){
+async function showDashboard(user){
 
-const name =
-(user.user_metadata && user.user_metadata.full_name)
-? user.user_metadata.full_name
-: (user.email || 'Customer');
+  const name =
+    (user.user_metadata && user.user_metadata.full_name)
+    ? user.user_metadata.full_name
+    : (user.email || 'Customer');
 
-document.getElementById('userName').textContent=name;
+  document.getElementById('userName').textContent = name;
 
-document.getElementById('dashboard').style.display='block';
+  const { data, error } = await supabaseClient
+    .from('wallets')
+    .select('balance')
+    .eq('user_id', user.id)
+    .single();
 
+  if (!error && data) {
+    document.querySelector('.balance strong').textContent =
+      '₦' + Number(data.balance).toFixed(2);
+  }
+
+  document.getElementById('dashboard').style.display='block';
 }
 
 async function logout(){
