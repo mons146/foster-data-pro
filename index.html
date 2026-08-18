@@ -3,52 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Foster Data Pro</title>
+
 <meta name="description" content="Foster Data Pro - affordable data, airtime and bill payment services in Nigeria.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f4f7fb;color:#101828}
-header{background:linear-gradient(135deg,#0756c9,#087cff);color:#fff}
-nav{max-width:1100px;margin:auto;padding:20px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:800}
-button{border:0;border-radius:10px;padding:13px 20px;font-size:15px;font-weight:700;cursor:pointer}
-.login-btn{background:#fff;color:#0756c9}
-.hero{max-width:1100px;margin:auto;padding:65px 20px 75px}
-.hero h1{font-size:clamp(38px,7vw,68px);max-width:700px;line-height:1.05;margin-bottom:20px}
-.hero p{font-size:19px;line-height:1.7;max-width:650px;margin-bottom:28px}
-.primary{background:#fff;color:#0756c9}
-main{max-width:1100px;margin:auto;padding:40px 20px}
-h2{font-size:32px;margin-bottom:25px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.card{background:#fff;border:1px solid #e5eaf2;border-radius:18px;padding:25px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
-.icon{font-size:35px;margin-bottom:15px}
-.card h3{font-size:21px;margin-bottom:10px}
-.card p{color:#667085;line-height:1.6}
-.card button{background:#087cff;color:white;margin-top:18px}
-footer{text-align:center;background:#071b35;color:#d0d5dd;padding:30px 20px;margin-top:40px}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:10;padding:20px;overflow:auto}
-.box{background:#fff;max-width:430px;margin:50px auto;border-radius:18px;padding:28px;position:relative}
-.close{position:absolute;right:15px;top:12px;background:#eef2f7;padding:7px 11px}
-.tabs{display:flex;margin:20px 0}
-.tabs button{flex:1;background:#eef3f8;color:#344054;border-radius:8px}
-.tabs button.active{background:#087cff;color:#fff}
-.form{display:none}
-.form.active{display:block}
-label{display:block;font-weight:700;margin:13px 0 7px}
-input{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:9px;font-size:16px}
-.submit{width:100%;background:#087cff;color:#fff;margin-top:20px}
-.msg{margin-top:12px;font-size:14px;line-height:1.5}
-.error{color:#b42318}
-.success{color:#067647}
-.dashboard{display:none;position:fixed;inset:0;background:#f4f7fb;z-index:20;overflow:auto}
-.dash-head{background:#087cff;color:#fff;padding:22px 20px;display:flex;justify-content:space-between;align-items:center}
-.dash-body{max-width:900px;margin:auto;padding:30px 20px}
-.balance{background:#fff;border-radius:16px;padding:25px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
-.logout{background:#fff;color:#b42318}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#101828;
+}
+
+header{
+  background:linear-gradient(135deg,#0756c9,#087cff);
+  color:#fff;
+}
+
+nav{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:13px 20px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.login-btn{
+  background:#fff;
+  color:#0756c9;
+}
+
+.hero{
+  max-width:1100px;
+  margin:auto;
+  padding:65px 20px 75px;
+}
+
+.hero h1{
+  font-size:clamp(38px,7vw,68px);
+  max-width:700px;
+  line-height:1.05;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:19px;
+  line-height:1.7;
+  max-width:650px;
+  margin-bottom:28px;
+}
+
+.primary{
+  background:#fff;
+  color:#0756c9;
+}
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h2{
+  font-size:32px;
+  margin-bottom:25px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid #e5eaf2;
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.icon{
+  font-size:35px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  font-size:21px;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#667085;
+  line-height:1.6;
+}
+
+.card button{
+  background:#087cff;
+  color:white;
+  margin-top:18px;
+}
+
+footer{
+  text-align:center;
+  background:#071b35;
+  color:#d0d5dd;
+  padding:30px 20px;
+  margin-top:40px;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:10;
+  padding:20px;
+  overflow:auto;
+}
+
+.box{
+  background:#fff;
+  max-width:430px;
+  margin:50px auto;
+  border-radius:18px;
+  padding:28px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:15px;
+  top:12px;
+  background:#eef2f7;
+  padding:7px 11px;
+}
+
+.tabs{
+  display:flex;
+  margin:20px 0;
+}
+
+.tabs button{
+  flex:1;
+  background:#eef3f8;
+  color:#344054;
+  border-radius:8px;
+}
+
+.tabs button.active{
+  background:#087cff;
+  color:#fff;
+}
+
+.form{
+  display:none;
+}
+
+.form.active{
+  display:block;
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin:13px 0 7px;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  font-size:16px;
+}
+
+.submit{
+  width:100%;
+  background:#087cff;
+  color:#fff;
+  margin-top:20px;
+}
+
+.msg{
+  margin-top:12px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.dashboard{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#f4f7fb;
+  z-index:20;
+  overflow:auto;
+}
+
+.dash-head{
+  background:#087cff;
+  color:#fff;
+  padding:22px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.dash-body{
+  max-width:900px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.balance{
+  background:#fff;
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.balance-amount{
+  font-size:34px;
+  font-weight:800;
+  margin:12px 0;
+}
+
+.fund-btn{
+  background:#087cff !important;
+  color:#fff !important;
+  margin-top:10px;
+}
+
+.logout{
+  background:#fff;
+  color:#b42318;
+}
+
+.loading{
+  opacity:.7;
+  pointer-events:none;
+}
+
 @media(max-width:600px){
-.hero{padding-top:45px}
-.hero h1{font-size:42px}
+  .hero{
+    padding-top:45px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
 }
 </style>
 </head>
@@ -56,19 +281,36 @@ input{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:9px;font-si
 <body>
 
 <header>
+
 <nav>
 <div class="logo">FOSTER DATA PRO</div>
-<button class="login-btn" onclick="openAuth('login')">Login / Register</button>
+
+<button class="login-btn" onclick="openAuth('login')">
+Login / Register
+</button>
 </nav>
 
 <section class="hero">
+
 <h1>Fast, simple & affordable digital services.</h1>
-<p>Buy data and airtime, pay bills and manage your transactions from one convenient platform.</p>
-<button class="primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Services</button>
+
+<p>
+Buy data and airtime, pay bills and manage your transactions from one convenient platform.
+</p>
+
+<button
+class="primary"
+onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+Explore Services
+</button>
+
 </section>
+
 </header>
 
+
 <main id="services">
+
 <h2>Our Services</h2>
 
 <div class="grid">
@@ -102,11 +344,16 @@ input{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:9px;font-si
 </div>
 
 </div>
+
 </main>
+
 
 <footer>
 © 2026 Foster Data Pro. All rights reserved.
 </footer>
+
+
+<!-- AUTH MODAL -->
 
 <div class="modal" id="authModal">
 
@@ -117,97 +364,232 @@ input{width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:9px;font-si
 <h2 id="authTitle">Customer Login</h2>
 
 <div class="tabs">
-<button id="loginTab" class="active" onclick="switchAuth('login')">Login</button>
-<button id="registerTab" onclick="switchAuth('register')">Register</button>
+
+<button
+id="loginTab"
+class="active"
+onclick="switchAuth('login')">
+Login
+</button>
+
+<button
+id="registerTab"
+onclick="switchAuth('register')">
+Register
+</button>
+
 </div>
 
-<form id="loginForm" class="form active" onsubmit="login(event)">
+
+<form
+id="loginForm"
+class="form active"
+onsubmit="login(event)">
 
 <label>Email</label>
-<input id="loginEmail" type="email" required>
+
+<input
+id="loginId"
+type="email"
+required
+placeholder="Enter your email">
 
 <label>Password</label>
-<input id="loginPass" type="password" required>
 
-<button class="submit" type="submit">Login</button>
+<input
+id="loginPass"
+type="password"
+required>
+
+<button
+class="submit"
+type="submit">
+Login
+</button>
 
 <div id="loginMsg" class="msg"></div>
 
 </form>
 
-<form id="registerForm" class="form" onsubmit="register(event)">
+
+<form
+id="registerForm"
+class="form"
+onsubmit="register(event)">
 
 <label>Full name</label>
-<input id="regName" required>
+
+<input
+id="regName"
+required>
 
 <label>Phone number</label>
-<input id="regPhone" type="tel" required>
+
+<input
+id="regPhone"
+type="tel"
+required>
 
 <label>Email</label>
-<input id="regEmail" type="email" required>
+
+<input
+id="regEmail"
+type="email"
+required>
 
 <label>Password</label>
-<input id="regPass" type="password" minlength="6" required>
 
-<button class="submit" type="submit">Create Account</button>
+<input
+id="regPass"
+type="password"
+minlength="6"
+required>
+
+<button
+class="submit"
+type="submit">
+Create Account
+</button>
 
 <div id="regMsg" class="msg"></div>
 
 </form>
 
 </div>
+
 </div>
 
-<div class="dashboard" id="dashboard">
+
+<!-- CUSTOMER DASHBOARD -->
+
+<div
+class="dashboard"
+id="dashboard">
 
 <div class="dash-head">
+
 <strong>FOSTER DATA PRO</strong>
-<button class="logout" onclick="logout()">Logout</button>
+
+<button
+class="logout"
+onclick="logout()">
+Logout
+</button>
+
 </div>
+
 
 <div class="dash-body">
 
+
 <div class="balance">
-<h2>Welcome, <span id="userName"></span> 👋</h2>
-<p>Your account is ready. Wallet balance: <strong>₦0.00</strong></p>
+
+<h2>
+Welcome,
+<span id="userName"></span> 👋
+</h2>
+
+<p>Available Wallet Balance</p>
+
+<div
+class="balance-amount"
+id="walletBalance">
+₦0.00
 </div>
+
+<button
+class="fund-btn"
+onclick="fundWallet()">
+💳 Fund Wallet
+</button>
+
+<div
+id="walletMsg"
+class="msg">
+</div>
+
+</div>
+
 
 <div class="grid">
 
 <div class="card">
+
 <h3>📶 Buy Data</h3>
-<p>Choose a network and data plan.</p>
-<button>Coming Soon</button>
+
+<p>
+Choose a network and data plan.
+</p>
+
+<button>
+Coming Soon
+</button>
+
 </div>
 
+
 <div class="card">
+
 <h3>📱 Buy Airtime</h3>
-<p>Purchase airtime from your wallet.</p>
-<button>Coming Soon</button>
+
+<p>
+Purchase airtime from your wallet.
+</p>
+
+<button>
+Coming Soon
+</button>
+
 </div>
+
 
 <div class="card">
+
 <h3>📋 Transactions</h3>
-<p>Your transaction history will appear here.</p>
-<button>Coming Soon</button>
+
+<p>
+Your transaction history will appear here.
+</p>
+
+<button>
+Coming Soon
+</button>
+
 </div>
 
 </div>
+
 </div>
+
 </div>
+
+
+<!-- PAYSTACK + SUPABASE -->
+
+<script src="https://js.paystack.co/v2/inline.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-const SUPABASE_URL = 'https://zbhoobplximrjvtmzzcf.supabase.co';
+const SUPABASE_URL =
+'https://zbhoobplximrjvtmzzcf.supabase.co';
 
-const SUPABASE_KEY = 'sb_publishable_sVMkpIUqCHTMkLNVk8MY1Q_QBcwNZxI';
+const SUPABASE_KEY =
+'sb_publishable_sVMkpIUqCHTMkLNVk8MY1Q_QBcwNZxI';
 
-const supabaseClient = window.supabase.createClient(
+const PAYSTACK_PUBLIC_KEY =
+'pk_test_bef8b2eab5ec5969777c1a5c946493818f34a93f';
+
+
+const supabaseClient =
+window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
+
+
+/* AUTH */
 
 function openAuth(mode){
 
@@ -217,50 +599,85 @@ switchAuth(mode);
 
 }
 
+
 function closeAuth(){
 
 document.getElementById('authModal').style.display='none';
 
 }
 
+
 function switchAuth(mode){
 
-const isLogin = mode === 'login';
+const login=mode==='login';
 
-document.getElementById('loginForm').classList.toggle('active',isLogin);
+document
+.getElementById('loginForm')
+.classList
+.toggle('active',login);
 
-document.getElementById('registerForm').classList.toggle('active',!isLogin);
+document
+.getElementById('registerForm')
+.classList
+.toggle('active',!login);
 
-document.getElementById('loginTab').classList.toggle('active',isLogin);
+document
+.getElementById('loginTab')
+.classList
+.toggle('active',login);
 
-document.getElementById('registerTab').classList.toggle('active',!isLogin);
+document
+.getElementById('registerTab')
+.classList
+.toggle('active',!login);
 
-document.getElementById('authTitle').textContent =
-isLogin ? 'Customer Login' : 'Create Customer Account';
+document
+.getElementById('authTitle')
+.textContent=
+login
+?'Customer Login'
+:'Create Customer Account';
 
 }
+
+
+/* REGISTER */
 
 async function register(e){
 
 e.preventDefault();
 
-const name=document.getElementById('regName').value.trim();
+const name=
+document.getElementById('regName')
+.value
+.trim();
 
-const phone=document.getElementById('regPhone').value.trim();
+const phone=
+document.getElementById('regPhone')
+.value
+.trim();
 
-const email=document.getElementById('regEmail').value.trim().toLowerCase();
+const email=
+document.getElementById('regEmail')
+.value
+.trim()
+.toLowerCase();
 
-const password=document.getElementById('regPass').value;
+const password=
+document.getElementById('regPass')
+.value;
 
-const msg=document.getElementById('regMsg');
+const msg=
+document.getElementById('regMsg');
 
-msg.className='msg';
+msg.style.color='#b42318';
 
-msg.textContent='Creating account...';
+msg.textContent='Creating your account...';
 
 try{
 
-const {data,error}=await supabaseClient.auth.signUp({
+const {data,error}=
+await supabaseClient.auth.signUp({
 
 email:email,
 
@@ -277,21 +694,20 @@ phone:phone
 
 if(error){
 
-msg.className='msg error';
-
 msg.textContent=error.message;
 
 return;
 
 }
 
-msg.className='msg success';
+msg.style.color='#067647';
 
 if(data.session){
 
-msg.textContent='Account created successfully.';
+msg.textContent=
+'Account created successfully.';
 
-setTimeout(function(){
+setTimeout(()=>{
 
 closeAuth();
 
@@ -301,37 +717,48 @@ showDashboard(data.user);
 
 }else{
 
-msg.textContent='Account created. Please check your email and confirm your account before logging in.';
+msg.textContent=
+'Account created. Please check your email and confirm your account before logging in.';
 
 }
 
 }catch(error){
 
-msg.className='msg error';
+msg.textContent=
+'Connection error: '+error.message;
 
-msg.textContent='Connection error: '+error.message;
+}
 
 }
 
-}
+
+/* LOGIN */
 
 async function login(e){
 
 e.preventDefault();
 
-const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+const email=
+document.getElementById('loginId')
+.value
+.trim()
+.toLowerCase();
 
-const password=document.getElementById('loginPass').value;
+const password=
+document.getElementById('loginPass')
+.value;
 
-const msg=document.getElementById('loginMsg');
+const msg=
+document.getElementById('loginMsg');
 
-msg.className='msg';
+msg.style.color='#b42318';
 
 msg.textContent='Logging in...';
 
 try{
 
-const {data,error}=await supabaseClient.auth.signInWithPassword({
+const {data,error}=
+await supabaseClient.auth.signInWithPassword({
 
 email:email,
 
@@ -340,8 +767,6 @@ password:password
 });
 
 if(error){
-
-msg.className='msg error';
 
 msg.textContent=error.message;
 
@@ -355,62 +780,241 @@ showDashboard(data.user);
 
 }catch(error){
 
-msg.className='msg error';
+msg.textContent=
+'Connection error: '+error.message;
 
-msg.textContent='Connection error: '+error.message;
+}
 
 }
 
-}
+
+/* DASHBOARD */
 
 async function showDashboard(user){
 
-  const name =
-    (user.user_metadata && user.user_metadata.full_name)
-    ? user.user_metadata.full_name
-    : (user.email || 'Customer');
+const name=
+user.user_metadata?.full_name
+||
+user.email
+||
+'Customer';
 
-  document.getElementById('userName').textContent = name;
+document.getElementById('userName')
+.textContent=name;
 
-  const { data, error } = await supabaseClient
-    .from('wallets')
-    .select('balance')
-    .eq('user_id', user.id)
-    .single();
+document.getElementById('dashboard')
+.style.display='block';
 
-  if (!error && data) {
-    document.querySelector('.balance strong').textContent =
-      '₦' + Number(data.balance).toFixed(2);
-  }
+await loadWallet();
 
-  document.getElementById('dashboard').style.display='block';
 }
+
+
+/* LOAD WALLET */
+
+async function loadWallet(){
+
+const {data:userData}=
+await supabaseClient.auth.getUser();
+
+if(!userData.user){
+
+return;
+
+}
+
+const {data,error}=
+await supabaseClient
+
+.from('wallets')
+
+.select('balance')
+
+.eq('user_id',userData.user.id)
+
+.single();
+
+if(error){
+
+console.error(error);
+
+return;
+
+}
+
+document.getElementById('walletBalance')
+.textContent=
+'₦'+Number(data.balance).toFixed(2);
+
+}
+
+
+/* FUND WALLET */
+
+async function fundWallet(){
+
+const {data:userData,error:userError}=
+await supabaseClient.auth.getUser();
+
+if(userError || !userData.user){
+
+alert('Please log in first.');
+
+return;
+
+}
+
+if(
+!window.PaystackPop
+){
+
+alert('Payment system is still loading. Please try again.');
+
+return;
+
+}
+
+if(
+PAYSTACK_PUBLIC_KEY==='YOUR_TEST_PUBLIC_KEY'
+){
+
+alert('Paystack test key has not been added yet.');
+
+return;
+
+}
+
+const amountText=
+prompt(
+'Enter the amount you want to fund in Naira:'
+);
+
+if(amountText===null){
+
+return;
+
+}
+
+const amount=
+Number(
+amountText.replace(/,/g,'')
+);
+
+if(
+!Number.isFinite(amount)
+||
+amount<=0
+){
+
+alert('Please enter a valid amount.');
+
+return;
+
+}
+
+if(amount<100){
+
+alert('Minimum test funding amount is ₦100.');
+
+return;
+
+}
+
+
+const user=
+userData.user;
+
+
+const popup=
+new PaystackPop();
+
+
+popup.newTransaction({
+
+key:PAYSTACK_PUBLIC_KEY,
+
+email:user.email,
+
+amount:Math.round(amount*100),
+
+currency:'NGN',
+
+metadata:{
+
+user_id:user.id
+
+},
+
+onSuccess:function(transaction){
+
+const msg=
+document.getElementById('walletMsg');
+
+msg.style.color='#067647';
+
+msg.textContent=
+'Payment successful. Verifying your wallet...';
+
+setTimeout(
+loadWallet,
+4000
+);
+
+},
+
+onCancel:function(){
+
+const msg=
+document.getElementById('walletMsg');
+
+msg.style.color='#b42318';
+
+msg.textContent=
+'Payment was cancelled.';
+
+}
+
+});
+
+}
+
+
+/* LOGOUT */
 
 async function logout(){
 
 await supabaseClient.auth.signOut();
 
-document.getElementById('dashboard').style.display='none';
+document.getElementById('dashboard')
+.style.display='none';
 
 }
 
-async function checkSession(){
 
-const {data}=await supabaseClient.auth.getSession();
+/* RESTORE SESSION */
 
-if(data.session){
+async function checkCurrentUser(){
 
-showDashboard(data.session.user);
+const {data}=
+await supabaseClient.auth.getUser();
+
+if(data.user){
+
+showDashboard(data.user);
 
 }
 
 }
 
-window.addEventListener('load',function(){
 
-checkSession();
+window.addEventListener(
+'load',
+function(){
 
-});
+checkCurrentUser();
+
+}
+);
 
 </script>
 
