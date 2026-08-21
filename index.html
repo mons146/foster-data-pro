@@ -814,37 +814,39 @@ await loadWallet();
 
 async function loadWallet(){
 
-const {data:userData}=
-await supabaseClient.auth.getUser();
+  const {data:userData,error:userError} =
+    await supabaseClient.auth.getUser();
 
-if(!userData.user){
+  if(userError || !userData.user){
 
-return;
+    alert(
+      'Wallet error: ' +
+      (userError?.message || 'User session not found')
+    );
 
-}
+    return;
+  }
 
-const {data,error}=
-await supabaseClient
+  const {data,error} =
+    await supabaseClient
+      .from('wallets')
+      .select('balance')
+      .eq('user_id',userData.user.id)
+      .single();
 
-.from('wallets')
+  if(error){
 
-.select('balance')
+    alert(
+      'Wallet error: ' +
+      error.message
+    );
 
-.eq('user_id',userData.user.id)
+    return;
+  }
 
-.single();
-
-if(error){
-
-console.error(error);
-
-return;
-
-}
-
-document.getElementById('walletBalance')
-.textContent=
-'₦'+Number(data.balance).toFixed(2);
+  document.getElementById('walletBalance')
+    .textContent =
+    '₦' + Number(data.balance).toFixed(2);
 
 }
 
