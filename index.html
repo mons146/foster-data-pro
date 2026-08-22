@@ -820,26 +820,27 @@ async function loadWallet(){
   if(userError || !userData.user){
 
     alert(
-      'Wallet error: ' +
-      (userError?.message || 'User session not found')
+      'Wallet error: No logged-in user found. ' +
+      (userError?.message || '')
     );
 
     return;
   }
 
+  const currentUserId = userData.user.id;
+
+  alert('Logged-in user ID: ' + currentUserId);
+
   const {data,error} =
     await supabaseClient
       .from('wallets')
       .select('balance')
-      .eq('user_id',userData.user.id)
+      .eq('user_id',currentUserId)
       .single();
 
   if(error){
 
-    alert(
-      'Wallet error: ' +
-      error.message
-    );
+    alert('Wallet error: ' + error.message);
 
     return;
   }
@@ -847,7 +848,6 @@ async function loadWallet(){
   document.getElementById('walletBalance')
     .textContent =
     '₦' + Number(data.balance).toFixed(2);
-
 }
 
 
